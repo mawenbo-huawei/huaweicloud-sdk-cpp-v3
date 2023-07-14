@@ -31,7 +31,7 @@ jobs:
             -H "Authorization: Bearer ${github_token}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             -d "{\"ref\":\"master\"}" \
-            https://api.github.com/repos/${github_repo}/actions/workflows/WORKFLOW_ID/dispatches \
+            -L "https://api.github.com/repos/${github_repo}/actions/workflows/${workflow}/dispatches" \
             echo "workflow triggered: ${workflow}"
           done
         fi
