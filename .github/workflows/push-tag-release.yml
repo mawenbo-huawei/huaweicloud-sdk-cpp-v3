@@ -1,7 +1,5 @@
 name: push && tag && release
 on:
-  push:
-    branches: [ "master-dev" ]
   workflow_dispatch:
 permissions: write-all
 jobs:
@@ -19,18 +17,16 @@ jobs:
     - name: push && tag && release
       shell: bash
       run: |
-        version=$(cat VERSION)
-        echo "version ${version} found on branch ${GITHUB_REF_NAME}"
+        git clone --branch=master-dev --depth=1 ${{ secrets.SOURCE_REPO }} ../source_repo
+        version=$(cat ../source_repo/VERSION)
+        echo "version ${version} found."
         tag_name="v${version}"
         for tag in $(git tag --list)
         do
           if [[ "$tag" == "$tag_name" ]]; then echo "tag ${tag_name} exists, skip" && exit 0; fi
         done
-        mkdir ../temp || exit 1
-        find . -maxdepth 1 -mindepth 1  | grep -Ev '*git*|.cid|.codecheck|buildscript' | xargs -I '{}' cp -a '{}' ../temp
-        git checkout master
         find . -maxdepth 1 -mindepth 1  | grep -Ev '*git*' | xargs -I '{}' rm -rf '{}'
-        mv ../temp/* .
+        find ../source_repo -maxdepth 1 -mindepth 1  | grep -Ev '*git*|.cid|.codecheck|buildscript' | xargs -I '{}' cp -a '{}' .
         echo '-----BEGIN CONTENTS IN CURRENT DIR-----'
         ls -a
         echo '-----END CONTENTS IN CURRENT DIR-----'
