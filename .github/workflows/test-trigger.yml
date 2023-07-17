@@ -22,14 +22,14 @@ jobs:
         echo "publish_workflows: ${publish_workflows}"
         if [ -n "$publish_workflows" ]
         then
-          workflow_file=$(basename "$GITHUB_WORKFLOW_FILE")
+          workflow_file=$(basename "$github_workflow")
           IFS=',' read -ra workflows <<< "$publish_workflows"
           for workflow in "${workflows[@]}"
           do
             if [[ "$workflow" == "$workflow_file" ]]
-            then
-              echo "the workflow '${workflow}' is same as the current, skip"
-              continue
+              then
+                echo "workflow ${workflow} is same as the current, skip"
+                continue
             fi
             curl -L \
             -X POST \
@@ -44,5 +44,6 @@ jobs:
       env:
         github_repo: ${{ github.repository }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_workflow: ${{ github.event.workflow }}
         publish_workflows: ${{ vars.PUBLISH_WORKFLOWS }}
 
