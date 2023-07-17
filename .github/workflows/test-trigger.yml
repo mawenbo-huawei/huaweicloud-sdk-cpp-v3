@@ -22,9 +22,15 @@ jobs:
         echo "publish_workflows: ${publish_workflows}"
         if [ -n "$publish_workflows" ]
         then
+          workflow_file=$(basename "$GITHUB_WORKFLOW_FILE")
           IFS=',' read -ra workflows <<< "$publish_workflows"
           for workflow in "${workflows[@]}"
           do
+            if [[ "$workflow" == "$workflow_file" ]]
+            then
+              echo "the workflow '${workflow}' is same as the current, skip"
+              continue
+            fi
             curl -L \
             -X POST \
             -H "Accept: application/vnd.github+json" \
