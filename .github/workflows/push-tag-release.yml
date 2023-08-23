@@ -1,4 +1,4 @@
-name: push && tag && release
+name: push & tag & release
 on:
   workflow_dispatch:
 permissions: write-all
@@ -6,7 +6,7 @@ jobs:
   release:
     runs-on: ubuntu-22.04
     steps:
-    - name: Pull Source
+    - name: Pull source
       uses: actions/checkout@v3
       with:
         github-server-url: https://gitee.com
@@ -14,16 +14,16 @@ jobs:
         ssh-key: ${{ secrets.SSH_KEY }}
         ssh-known-hosts: ${{ secrets.KNOWN_HOSTS }}
         path: source
-    - name: Pull Target
+    - name: Pull target
       uses: actions/checkout@v3
       with:
         ssh-key: ${{ secrets.SSH_KEY }}
         path: target
-    - name: Git Config
+    - name: Configure
       run: |
         git config --global user.name ${{ vars.SDK_USERNAME }}
         git config --global user.email ${{ vars.SDK_EMAIL }}
-    - name: Push && Tag && Release
+    - name: Push & Tag & Release
       shell: bash
       run: |
         version=$(cat source/VERSION)
