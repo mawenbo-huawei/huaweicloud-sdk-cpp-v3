@@ -21,8 +21,8 @@ jobs:
         path: target
     - name: Git Config
       run: |
-        git config user.name ${{ vars.SDK_USERNAME }}
-        git config user.email ${{ vars.SDK_EMAIL }}
+        git config --global user.name ${{ vars.SDK_USERNAME }}
+        git config --global user.email ${{ vars.SDK_EMAIL }}
     - name: Push && Tag && Release
       shell: bash
       run: |
