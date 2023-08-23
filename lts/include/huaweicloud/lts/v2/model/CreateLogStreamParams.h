@@ -8,6 +8,7 @@
 #include <huaweicloud/core/http/HttpResponse.h>
 
 #include <string>
+#include <huaweicloud/lts/v2/model/TagsBody.h>
 
 namespace HuaweiCloud {
 namespace Sdk {
@@ -39,7 +40,7 @@ public:
     /// CreateLogStreamParams members
 
     /// <summary>
-    /// 需要创建的日志流名称
+    /// 需要创建的日志流名称。
     /// </summary>
 
     std::string getLogStreamName() const;
@@ -47,10 +48,32 @@ public:
     void unsetlogStreamName();
     void setLogStreamName(const std::string& value);
 
+    /// <summary>
+    /// 日志存储时间 说明： 该参数仅对华东-上海一、华北-北京四、华南-广州用户开放。
+    /// </summary>
+
+    int32_t getTtlInDays() const;
+    bool ttlInDaysIsSet() const;
+    void unsetttlInDays();
+    void setTtlInDays(int32_t value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+
+    TagsBody getTags() const;
+    bool tagsIsSet() const;
+    void unsettags();
+    void setTags(const TagsBody& value);
+
 
 protected:
     std::string logStreamName_;
     bool logStreamNameIsSet_;
+    int32_t ttlInDays_;
+    bool ttlInDaysIsSet_;
+    TagsBody tags_;
+    bool tagsIsSet_;
 
 };
 

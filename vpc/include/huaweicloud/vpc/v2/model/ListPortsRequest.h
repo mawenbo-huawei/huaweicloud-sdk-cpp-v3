@@ -156,6 +156,15 @@ public:
     void unsetenterpriseProjectId();
     void setEnterpriseProjectId(const std::string& value);
 
+    /// <summary>
+    /// 按照是否使能efi过滤查询
+    /// </summary>
+
+    bool isEnableEfi() const;
+    bool enableEfiIsSet() const;
+    void unsetenableEfi();
+    void setEnableEfi(bool value);
+
 
 protected:
     std::string name_;
@@ -184,6 +193,8 @@ protected:
     bool fixedIpsIsSet_;
     std::string enterpriseProjectId_;
     bool enterpriseProjectIdIsSet_;
+    bool enableEfi_;
+    bool enableEfiIsSet_;
 
 #ifdef RTTR_FLAG
     RTTR_ENABLE()

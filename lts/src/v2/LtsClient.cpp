@@ -747,6 +747,49 @@ std::shared_ptr<DeleteActiveAlarmsResponse> LtsClient::deleteActiveAlarms(Delete
 
     return localVarResult;
 }
+std::shared_ptr<DeleteDashboardResponse> LtsClient::deleteDashboard(DeleteDashboardRequest &request)
+{
+    std::string localVarPath = "/v2/{project_id}/dashboard";
+
+    std::map<std::string, std::string> localVarQueryParams;
+    std::map<std::string, std::string> localVarHeaderParams;
+    std::map<std::string, std::string> localVarFormParams;
+    std::map<std::string, std::string> localVarPathParams;
+    std::map<std::string, std::shared_ptr<HttpContent>> localVarFileParams;
+
+
+    bool isJson = false;
+    bool isMultiPart = false;
+    std::string contentType = getContentType("application/json", isJson, isMultiPart);
+    localVarHeaderParams["Content-Type"] = contentType;
+
+    if (request.idIsSet()) {
+        localVarQueryParams["id"] = parameterToString(request.getId());
+    }
+    if (request.isDeleteChartsIsSet()) {
+        localVarQueryParams["is_delete_charts"] = parameterToString(request.isIsDeleteCharts());
+    }
+    if (request.contentTypeIsSet()) {
+        localVarHeaderParams["Content-Type"] = parameterToString(request.getContentType());
+    }
+
+    std::string localVarHttpBody;
+
+    std::unique_ptr<HttpResponse> res = callApi("DELETE", localVarPath, localVarPathParams, localVarQueryParams, localVarHeaderParams, localVarHttpBody);
+
+    std::shared_ptr<DeleteDashboardResponse> localVarResult = std::make_shared<DeleteDashboardResponse>();
+
+    if (!res->getHttpBody().empty()) {
+        utility::string_t localVarResponse = utility::conversions::to_string_t(res->getHttpBody());
+        web::json::value localVarJson = web::json::value::parse(localVarResponse);
+        localVarResult->fromJson(localVarJson);
+    }
+    localVarResult->setStatusCode(res->getStatusCode());
+    localVarResult->setHeaderParams(res->getHeaderParams());
+    localVarResult->setHttpBody(res->getHttpBody());
+
+    return localVarResult;
+}
 std::shared_ptr<DeleteHostGroupResponse> LtsClient::deleteHostGroup(DeleteHostGroupRequest &request)
 {
     std::string localVarPath = "/v3/{project_id}/lts/host-group";
@@ -2501,6 +2544,50 @@ std::shared_ptr<UpdateLogGroupResponse> LtsClient::updateLogGroup(UpdateLogGroup
 
     return localVarResult;
 }
+std::shared_ptr<UpdateLogStreamResponse> LtsClient::updateLogStream(UpdateLogStreamRequest &request)
+{
+    std::string localVarPath = "/v2/{project_id}/groups/{log_group_id}/streams_ttl/{log_stream_id}";
+
+    std::map<std::string, std::string> localVarQueryParams;
+    std::map<std::string, std::string> localVarHeaderParams;
+    std::map<std::string, std::string> localVarFormParams;
+    std::map<std::string, std::string> localVarPathParams;
+    std::map<std::string, std::shared_ptr<HttpContent>> localVarFileParams;
+
+    localVarPathParams["log_group_id"] = parameterToString(request.getLogGroupId());
+    localVarPathParams["log_stream_id"] = parameterToString(request.getLogStreamId());
+
+    bool isJson = false;
+    bool isMultiPart = false;
+    std::string contentType = getContentType("application/json;charset=UTF-8", isJson, isMultiPart);
+    localVarHeaderParams["Content-Type"] = contentType;
+
+    if (request.contentTypeIsSet()) {
+        localVarHeaderParams["Content-Type"] = parameterToString(request.getContentType());
+    }
+
+    std::string localVarHttpBody;
+    if (isJson) {
+        web::json::value localVarJson;
+        localVarJson = ModelBase::toJson(request.getBody());
+        localVarHttpBody = utility::conversions::to_utf8string(localVarJson.serialize());
+    }
+
+    std::unique_ptr<HttpResponse> res = callApi("PUT", localVarPath, localVarPathParams, localVarQueryParams, localVarHeaderParams, localVarHttpBody);
+
+    std::shared_ptr<UpdateLogStreamResponse> localVarResult = std::make_shared<UpdateLogStreamResponse>();
+
+    if (!res->getHttpBody().empty()) {
+        utility::string_t localVarResponse = utility::conversions::to_string_t(res->getHttpBody());
+        web::json::value localVarJson = web::json::value::parse(localVarResponse);
+        localVarResult->fromJson(localVarJson);
+    }
+    localVarResult->setStatusCode(res->getStatusCode());
+    localVarResult->setHeaderParams(res->getHeaderParams());
+    localVarResult->setHttpBody(res->getHttpBody());
+
+    return localVarResult;
+}
 std::shared_ptr<UpdateNotificationTemplateResponse> LtsClient::updateNotificationTemplate(UpdateNotificationTemplateRequest &request)
 {
     std::string localVarPath = "/v2/{project_id}/{domain_id}/lts/events/notification/templates";
@@ -3087,10 +3174,18 @@ std::string LtsClient::parameterToString(double value)
     return toString(value);
 }
 
+std::string LtsClient::parameterToString(const Object& obj)
+{
+    auto val = obj.toJson();
+    std::string value;
+    ModelBase::fromJson(val, value);
+    return value;
+}
 std::string LtsClient::parameterToString(const utility::datetime &value)
 {
     return utility::conversions::to_utf8string(value.to_string(utility::datetime::ISO_8601));
 }
+
 }
 }
 }

@@ -15,6 +15,9 @@ CreateLogStreamParams::CreateLogStreamParams()
 {
     logStreamName_ = "";
     logStreamNameIsSet_ = false;
+    ttlInDays_ = 0;
+    ttlInDaysIsSet_ = false;
+    tagsIsSet_ = false;
 }
 
 CreateLogStreamParams::~CreateLogStreamParams() = default;
@@ -29,6 +32,12 @@ web::json::value CreateLogStreamParams::toJson() const
 
     if(logStreamNameIsSet_) {
         val[utility::conversions::to_string_t("log_stream_name")] = ModelBase::toJson(logStreamName_);
+    }
+    if(ttlInDaysIsSet_) {
+        val[utility::conversions::to_string_t("ttl_in_days")] = ModelBase::toJson(ttlInDays_);
+    }
+    if(tagsIsSet_) {
+        val[utility::conversions::to_string_t("tags")] = ModelBase::toJson(tags_);
     }
 
     return val;
@@ -45,6 +54,24 @@ bool CreateLogStreamParams::fromJson(const web::json::value& val)
             std::string refVal;
             ok &= ModelBase::fromJson(fieldValue, refVal);
             setLogStreamName(refVal);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("ttl_in_days"))) {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("ttl_in_days"));
+        if(!fieldValue.is_null())
+        {
+            int32_t refVal;
+            ok &= ModelBase::fromJson(fieldValue, refVal);
+            setTtlInDays(refVal);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("tags"))) {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("tags"));
+        if(!fieldValue.is_null())
+        {
+            TagsBody refVal;
+            ok &= ModelBase::fromJson(fieldValue, refVal);
+            setTags(refVal);
         }
     }
     return ok;
@@ -69,6 +96,48 @@ bool CreateLogStreamParams::logStreamNameIsSet() const
 void CreateLogStreamParams::unsetlogStreamName()
 {
     logStreamNameIsSet_ = false;
+}
+
+int32_t CreateLogStreamParams::getTtlInDays() const
+{
+    return ttlInDays_;
+}
+
+void CreateLogStreamParams::setTtlInDays(int32_t value)
+{
+    ttlInDays_ = value;
+    ttlInDaysIsSet_ = true;
+}
+
+bool CreateLogStreamParams::ttlInDaysIsSet() const
+{
+    return ttlInDaysIsSet_;
+}
+
+void CreateLogStreamParams::unsetttlInDays()
+{
+    ttlInDaysIsSet_ = false;
+}
+
+TagsBody CreateLogStreamParams::getTags() const
+{
+    return tags_;
+}
+
+void CreateLogStreamParams::setTags(const TagsBody& value)
+{
+    tags_ = value;
+    tagsIsSet_ = true;
+}
+
+bool CreateLogStreamParams::tagsIsSet() const
+{
+    return tagsIsSet_;
+}
+
+void CreateLogStreamParams::unsettags()
+{
+    tagsIsSet_ = false;
 }
 
 }

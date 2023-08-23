@@ -48,6 +48,7 @@
 
 #include <cpprest/details/basic_types.h>
 #include <huaweicloud/core/utils/ModelBase.h>
+#include <huaweicloud/core/utils/Object.h>
 #undef U
 #include <boost/optional.hpp>
 
@@ -231,7 +232,7 @@ public:
     std::shared_ptr<ListSingleStreamBitrateResponse> listSingleStreamBitrate(
         ListSingleStreamBitrateRequest &request
     );
-    // 查询流监控数据接口
+    // 查询推流监控数据接口
     //
     // 查询流监控数据接口，包括帧率码率断流情况。
     // 
@@ -278,7 +279,9 @@ private:
     std::string parameterToString(int64_t value);
     std::string parameterToString(float value);
     std::string parameterToString(double value);
+    std::string parameterToString(const Object& obj);
     std::string parameterToString(const utility::datetime &value);
+
     template<class T>
     std::string parameterToString(const std::vector<T> &value)
     {

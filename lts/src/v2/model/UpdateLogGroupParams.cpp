@@ -15,6 +15,7 @@ UpdateLogGroupParams::UpdateLogGroupParams()
 {
     ttlInDays_ = 0;
     ttlInDaysIsSet_ = false;
+    tagsIsSet_ = false;
 }
 
 UpdateLogGroupParams::~UpdateLogGroupParams() = default;
@@ -29,6 +30,9 @@ web::json::value UpdateLogGroupParams::toJson() const
 
     if(ttlInDaysIsSet_) {
         val[utility::conversions::to_string_t("ttl_in_days")] = ModelBase::toJson(ttlInDays_);
+    }
+    if(tagsIsSet_) {
+        val[utility::conversions::to_string_t("tags")] = ModelBase::toJson(tags_);
     }
 
     return val;
@@ -45,6 +49,15 @@ bool UpdateLogGroupParams::fromJson(const web::json::value& val)
             int32_t refVal;
             ok &= ModelBase::fromJson(fieldValue, refVal);
             setTtlInDays(refVal);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("tags"))) {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("tags"));
+        if(!fieldValue.is_null())
+        {
+            std::vector<TagsBody> refVal;
+            ok &= ModelBase::fromJson(fieldValue, refVal);
+            setTags(refVal);
         }
     }
     return ok;
@@ -69,6 +82,27 @@ bool UpdateLogGroupParams::ttlInDaysIsSet() const
 void UpdateLogGroupParams::unsetttlInDays()
 {
     ttlInDaysIsSet_ = false;
+}
+
+std::vector<TagsBody>& UpdateLogGroupParams::getTags()
+{
+    return tags_;
+}
+
+void UpdateLogGroupParams::setTags(const std::vector<TagsBody>& value)
+{
+    tags_ = value;
+    tagsIsSet_ = true;
+}
+
+bool UpdateLogGroupParams::tagsIsSet() const
+{
+    return tagsIsSet_;
+}
+
+void UpdateLogGroupParams::unsettags()
+{
+    tagsIsSet_ = false;
 }
 
 }

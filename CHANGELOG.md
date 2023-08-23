@@ -1,3 +1,551 @@
+# 3.1.48 2023-08-21
+
+### HuaweiCloud SDK KMS
+
+- _Features_
+  - Support `KMS`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### HuaweiCloud SDK LTS
+
+- _Features_
+  - Support the interface `DeleteDashboard`
+- _Bug Fix_
+  - None
+- _Change_
+  - **CreateDashBoard**
+    - changes of response param
+      - `* last_update_time: string -> int64`
+      - `* useSystemTemplate: string -> boolean`
+  - **CreateLogStream**
+    - changes of request param
+      - `- enterprise_project_name`
+      - `- log_stream_name: enum value [lts-stream-13ci]`
+      - `* ttl_in_days: string -> int32`
+      - `* tags: list<tagsBody> -> object<tagsBody>`
+  - **ListAccessConfig**
+    - changes of response param
+      - `+ cluster_id`
+      - `+ result.cluster_id`
+  - **UpdateAccessConfig**
+    - changes of request param
+      - `+ cluster_id`
+    - changes of response param
+      - `+ cluster_id`
+  - **CreateAccessConfig**
+    - changes of request param
+      - `+ cluster_id`
+    - changes of response param
+      - `+ cluster_id`
+  - **DeleteAccessConfig**
+    - changes of response param
+      - `+ cluster_id`
+      - `+ result.cluster_id`
+
+# 3.1.47 2023-08-17
+
+### HuaweiCloud SDK CodeArtsBuild
+
+- _Features_
+  - Support `CodeArtsBuild`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### HuaweiCloud SDK ECS
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **CreateServers**
+    - changes of request param
+      - `+ server.root_volume.iops`
+      - `+ server.root_volume.throughput`
+      - `+ server.root_volume.volumetype: enum value [GPSSD2,ESSD2]`
+      - `+ server.data_volumes.iops`
+      - `+ server.data_volumes.throughput`
+      - `+ server.data_volumes.volumetype: enum value [GPSSD2,ESSD2]`
+  - **CreatePostPaidServers**
+    - changes of request param
+      - `+ server.data_volumes.iops`
+      - `+ server.data_volumes.throughput`
+      - `+ server.data_volumes.volumetype: enum value [GPSSD2,ESSD2]`
+      - `+ server.root_volume.iops`
+      - `+ server.root_volume.throughput`
+      - `+ server.root_volume.volumetype: enum value [GPSSD2,ESSD2]`
+
+### HuaweiCloud SDK GaussDB
+
+- _Features_
+  - Support the interfaces `ModifyGaussMysqlDns`, `CreateGaussMysqlDns`
+- _Bug Fix_
+  - None
+- _Change_
+  - **ShowGaussMySqlInstanceInfo**
+    - changes of response param
+      - `+ instance.private_dns_names`
+  - **ListGaussMySqlInstanceDetailInfo**
+    - changes of response param
+      - `+ instances.private_dns_names`
+
+### HuaweiCloud SDK Live
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **ListSnapshotConfigs**
+    - changes of response param
+      - `* body: object<LiveSnapshotConfig> -> list<LiveSnapshotConfig>`
+
+### HuaweiCloud SDK MPC
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **CreateThumbnailsTask**
+    - changes of request param
+      - `+ thumbnail_para.dots_ms`
+      - `+ thumbnail_para.type: enum value [DOTS_MS]`
+  - **CreateTranscodingTask**
+    - changes of request param
+      - `+ thumbnail.params.dots_ms`
+      - `+ thumbnail.params.type: enum value [DOTS_MS]`
+
+### HuaweiCloud SDK VPC
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **CreateSecurityGroupRule**
+    - changes of request param
+      - `+ security_group_rule.remote_address_group_id`
+  - **NeutronCreateSecurityGroupRule**
+    - changes of request param
+      - `+ security_group_rule.remote_address_group_id`
+
+# 3.1.46 2023-08-10
+
+### HuaweiCloud SDK CodeArtsDeploy
+
+- _Features_
+  - Support `CodeArtsDeploy`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### HuaweiCloud SDK GaussDB
+
+- _Features_
+  - Support the interfaces `UpdateProxyPort`, `DescribeBackupEncryptStatus`, `ModifyBackupEncryptStatus`
+- _Bug Fix_
+  - None
+- _Change_
+  - **UpdateProxySessionConsistence**
+    - changes of request param
+      - `+ consistence_mode`
+  - **CreateGaussMySqlInstance**
+    - changes of request param
+      - `* datastore: object<MysqlDatastore> -> object<MysqlDatastoreInReq>`
+    - changes of response param
+      - `* instance.datastore: object<MysqlDatastore> -> object<MysqlDatastoreInRes>`
+  - **ShowGaussMySqlBackupList**
+    - changes of response param
+      - `- backups.datastore.kernel_version`
+      - `* backups.datastore: object<MysqlDatastore> -> object<MysqlDatastoreInBackup>`
+  - **ShowGaussMySqlProxyList**
+    - changes of response param
+      - `+ proxy_list.proxy.consistence_mode`
+
+### HuaweiCloud SDK OCR
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **RecognizeMyanmarIdcard**
+    - changes of request param
+      - `+ return_translation`
+    - changes of response param
+      - `+ result.translation_info`
+
+### HuaweiCloud SDK RDS
+
+- _Features_
+  - Support the interfaces `ListXellogFiles`, `CreateXelLogDownload`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+# 3.1.45 2023-08-03
+
+### HuaweiCloud SDK RDS
+
+- _Features_
+  - Support `RDS`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### HuaweiCloud SDK CDN
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **ShowDomainDetailByName**
+    - changes of response param
+      - `- domain.sources.weight`
+      - `* domain.sources: list<SourcesConfig> -> list<SourcesDomainConfig>`
+  - **ShowDomainFullConfig**
+    - changes of response param
+      - `+ configs.remark`
+      - `+ configs.ip_frequency_limit`
+      - `+ configs.hsts`
+      - `+ configs.quic`
+      - `+ configs.url_auth.inherit_config`
+      - `+ configs.sources.bucket_access_key`
+      - `+ configs.sources.bucket_secret_key`
+      - `+ configs.sources.bucket_region`
+      - `+ configs.sources.bucket_name`
+      - `+ configs.request_limit_rules.priority`
+      - `+ configs.request_limit_rules.match_type`
+      - `+ configs.request_limit_rules.match_value`
+  - **UpdateDomainFullConfig**
+    - changes of request param
+      - `+ configs.remark`
+      - `+ configs.ip_frequency_limit`
+      - `+ configs.hsts`
+      - `+ configs.quic`
+      - `+ configs.url_auth.inherit_config`
+      - `+ configs.sources.bucket_access_key`
+      - `+ configs.sources.bucket_secret_key`
+      - `+ configs.sources.bucket_region`
+      - `+ configs.sources.bucket_name`
+      - `+ configs.request_limit_rules.priority`
+      - `+ configs.request_limit_rules.match_type`
+      - `+ configs.request_limit_rules.match_value`
+
+### HuaweiCloud SDK CTS
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **DeleteTracker**
+    - changes of request param
+      - `+ tracker_type: enum value [system]`
+
+### HuaweiCloud SDK GaussDB
+
+- _Features_
+  - Support the interface `ModifyGaussMySqlProxyRouteMode`
+- _Bug Fix_
+  - None
+- _Change_
+  - **ShowGaussMySqlEngineVersion**
+    - changes of response param
+      - `+ datastores.version`
+      - `+ datastores.kernel_version`
+  - **CreateGaussMySqlProxy**
+    - changes of request param
+      - `+ route_mode`
+  - **CreateGaussMySqlInstance**
+    - changes of request param
+      - `+ datastore.kernel_version`
+    - changes of response param
+      - `+ instance.datastore.kernel_version`
+  - **ShowGaussMySqlBackupList**
+    - changes of response param
+      - `+ backups.datastore.kernel_version`
+  - **ShowGaussMySqlProxyList**
+    - changes of response param
+      - `+ proxy_list.proxy.route_mode`
+      - `+ proxy_list.proxy.balance_route_mode_enabled`
+
+### HuaweiCloud SDK GaussDBforopenGauss
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **ListInstances**
+    - changes of response param
+      - `+ instances.backup_used_space`
+  - **ListComponentInfos**
+    - changes of request param
+      - `+ component_type`
+      - `+ availability_zone_id`
+    - changes of response param
+      - `+ nodes.name`
+      - `+ nodes.availability_zone_id`
+      - `+ nodes.description`
+      - `+ nodes.status`
+      - `+ nodes.components.distributed_id`
+  - **ListInstancesDetails**
+    - changes of response param
+      - `+ instances.backup_used_space`
+
+### HuaweiCloud SDK VPC
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **ListPorts**
+    - changes of request param
+      - `+ enable_efi`
+    - changes of response param
+      - `+ ports.enable_efi`
+  - **CreatePort**
+    - changes of response param
+      - `+ port.enable_efi`
+  - **ShowPort**
+    - changes of response param
+      - `+ port.enable_efi`
+  - **UpdatePort**
+    - changes of response param
+      - `+ port.enable_efi`
+
+# 3.1.44 2023-07-27
+
+### HuaweiCloud SDK DRS
+
+- _Features_
+  - Support the following interfaces：
+    - `DownloadBatchCreateTemplate`
+    - `ImportBatchCreateJobs`
+    - `CopyJob`
+    - `ShowMetering`
+    - `ShowDirtyData`
+    - `ShowComparePolicy`
+    - `ShowHealthCompareJobList`
+    - `ShowProgressData`
+    - `ShowObjectMapping`
+    - `ShowActions`
+    - `ValidateJobName`
+    - `ShowEnterpriseProject`
+- _Bug Fix_
+  - None
+- _Change_
+  - **DownloadDbObjectTemplate**
+    - changes of request param
+      - `+ file_import_db_level`
+  - **UploadDbObjectTemplate**
+    - changes of request param
+      - `+ file_import_db_level`
+  - **ListAsyncJobs**
+    - changes of response param
+      - `+ jobs.status: enum value [AUTO_PARAM_VALIDATE_SUCCESS,COMMIT_SUCCESS]`
+      - `- jobs.status: enum value [ASYNC_JOB_CREATING,ASYNC_JOB_CREATE_FAILED,ASYNC_JOB_COMPLETED]`
+  - **CreateJob**
+    - changes of request param
+      - `+ job.node_info.base_info`
+    - changes of response param
+      - `+ is_clone_job`
+      - `+ create_time`
+      - `+ name`
+      - `+ id`
+      - `+ status`
+      - `+ job.is_clone_job`
+  - **BatchCreateJobsAsync**
+    - changes of request param
+      - `+ jobs.node_info.base_info`
+  - **ListAsyncJobDetail**
+    - changes of response param
+      - `+ jobs.support_import_file_resp`
+      - `+ jobs.instance_features`
+      - `+ jobs.task_version`
+      - `+ jobs.node_info.base_info`
+  - **UpdateBatchAsyncJobs**
+    - changes of request param
+      - `+ jobs.type: enum value [policy]`
+      - `- jobs.type: enum value [policy_config]`
+      - `+ jobs.params.node_info.base_info`
+  - **ShowJobDetail**
+    - changes of request param
+      - `+ type: enum value [file]`
+    - changes of response param
+      - `+ job.support_import_file_resp`
+      - `+ job.instance_features`
+      - `+ job.task_version`
+      - `+ job.node_info.base_info`
+  - **UpdateJob**
+    - changes of request param
+      - `+ job.type: enum value [policy]`
+      - `- job.type: enum value [policy_config]`
+      - `+ job.params.node_info.base_info`
+
+### HuaweiCloud SDK EIP
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **AttachShareBandwidth**
+    - changes of response param
+      - `+ publicip.vnic.vtep`
+      - `+ publicip.vnic.vni`
+      - `+ publicip.vnic.port_profile`
+  - **DetachShareBandwidth**
+    - changes of response param
+      - `+ publicip.vnic.vtep`
+      - `+ publicip.vnic.vni`
+      - `+ publicip.vnic.port_profile`
+  - **EnableNat64**
+    - changes of response param
+      - `+ publicip.vnic.vtep`
+      - `+ publicip.vnic.vni`
+      - `+ publicip.vnic.port_profile`
+  - **DisableNat64**
+    - changes of response param
+      - `+ publicip.vnic.vtep`
+      - `+ publicip.vnic.vni`
+      - `+ publicip.vnic.port_profile`
+  - **AttachBatchPublicIp**
+    - changes of response param
+      - `+ publicips.publicip.vnic.vtep`
+      - `+ publicips.publicip.vnic.vni`
+      - `+ publicips.publicip.vnic.port_profile`
+  - **DetachBatchPublicIp**
+    - changes of response param
+      - `+ publicips.publicip.vnic.vtep`
+      - `+ publicips.publicip.vnic.vni`
+      - `+ publicips.publicip.vnic.port_profile`
+
+### HuaweiCloud SDK GaussDBforNoSQL
+
+- _Features_
+  - Support the interface `ShowInstanceBiactiveRegions`
+- _Bug Fix_
+  - None
+- _Change_
+  - **ListConfigurations**
+    - changes of response param
+      - `+ quota`
+      - `+ configurations.mode`
+  - **ListConfigurationTemplates**
+    - changes of response param
+      - `+ quota`
+      - `+ configurations.mode`
+  - **ShowInstanceConfiguration**
+    - changes of response param
+      - `+ mode`
+      - `+ id`
+  - **ListConfigurationDatastores**
+    - changes of response param
+      - `+ datastores.mode`
+  - **ShowQuotas**
+    - changes of request param
+      - `+ datastore_type`
+      - `+ mode`
+  - **ListInstances**
+    - changes of response param
+      - `+ instances.datastore.whole_version`
+
+### HuaweiCloud SDK GaussDBforopenGauss
+
+- _Features_
+  - Support the interface `DownloadBackup`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### HuaweiCloud SDK LTS
+
+- _Features_
+  - Support the interface `UpdateLogStream`
+- _Bug Fix_
+  - None
+- _Change_
+  - **UpdateLogGroup**
+    - changes of request param
+      - `+ tags`
+  - **CreateLogGroup**
+    - changes of request param
+      - `+ tags`
+  - **CreateLogStream**
+    - changes of request param
+      - `+ enterprise_project_name`
+      - `+ ttl_in_days`
+      - `+ tags`
+      - `+ log_stream_name: enum value [lts-stream-13ci]`
+
+# 3.1.43 2023-07-20
+
+### HuaweiCloud SDK GaussDBforopenGauss
+
+- _Features_
+  - Support `GaussDBforopenGauss`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### HuaweiCloud SDK GaussDB
+
+- _Features_
+  - Support `GaussDB`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### HuaweiCloud SDK GaussDBforNoSQL
+
+- _Features_
+  - Support `GaussDBforNoSQL`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### HuaweiCloud SDK DDS
+
+- _Features_
+  - Support `DDS`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### HuaweiCloud SDK EIP
+
+- _Features_
+  - Support the following interfaces：
+    - `AttachShareBandwidth`
+    - `AttachBatchPublicIp`
+    - `DetachShareBandwidth`
+    - `DetachBatchPublicIp`
+    - `EnableNat64`
+    - `DisableNat64`
+    - `ListBandwidth`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
 # 3.1.42 2023-07-13
 
 ### HuaweiCloud SDK SIS

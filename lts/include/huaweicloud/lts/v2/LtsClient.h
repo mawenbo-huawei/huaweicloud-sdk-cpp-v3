@@ -55,6 +55,8 @@
 #include <huaweicloud/lts/v2/model/DeleteActiveAlarmsRequest.h>
 #include <huaweicloud/lts/v2/model/DeleteActiveAlarmsRequestBody.h>
 #include <huaweicloud/lts/v2/model/DeleteActiveAlarmsResponse.h>
+#include <huaweicloud/lts/v2/model/DeleteDashboardRequest.h>
+#include <huaweicloud/lts/v2/model/DeleteDashboardResponse.h>
 #include <huaweicloud/lts/v2/model/DeleteHostGroupRequest.h>
 #include <huaweicloud/lts/v2/model/DeleteHostGroupRequestBody.h>
 #include <huaweicloud/lts/v2/model/DeleteHostGroupResponse.h>
@@ -161,6 +163,9 @@
 #include <huaweicloud/lts/v2/model/UpdateLogGroupParams.h>
 #include <huaweicloud/lts/v2/model/UpdateLogGroupRequest.h>
 #include <huaweicloud/lts/v2/model/UpdateLogGroupResponse.h>
+#include <huaweicloud/lts/v2/model/UpdateLogStreamParams.h>
+#include <huaweicloud/lts/v2/model/UpdateLogStreamRequest.h>
+#include <huaweicloud/lts/v2/model/UpdateLogStreamResponse.h>
 #include <huaweicloud/lts/v2/model/UpdateNotificationTemplateRequest.h>
 #include <huaweicloud/lts/v2/model/UpdateNotificationTemplateResponse.h>
 #include <huaweicloud/lts/v2/model/UpdateStructConfigRequest.h>
@@ -205,6 +210,7 @@
 
 #include <cpprest/details/basic_types.h>
 #include <huaweicloud/core/utils/ModelBase.h>
+#include <huaweicloud/core/utils/Object.h>
 #undef U
 #include <boost/optional.hpp>
 
@@ -361,6 +367,14 @@ public:
     // Please refer to HUAWEI cloud API Explorer for details.
     std::shared_ptr<DeleteActiveAlarmsResponse> deleteActiveAlarms(
         DeleteActiveAlarmsRequest &request
+    );
+    // 删除仪表盘
+    //
+    // 删除仪表盘
+    // 
+    // Please refer to HUAWEI cloud API Explorer for details.
+    std::shared_ptr<DeleteDashboardResponse> deleteDashboard(
+        DeleteDashboardRequest &request
     );
     // 删除主机组
     //
@@ -698,6 +712,14 @@ public:
     std::shared_ptr<UpdateLogGroupResponse> updateLogGroup(
         UpdateLogGroupRequest &request
     );
+    // 修改日志流
+    //
+    // 该接口用于修改指定日志流下的日志存储时长。
+    // 
+    // Please refer to HUAWEI cloud API Explorer for details.
+    std::shared_ptr<UpdateLogStreamResponse> updateLogStream(
+        UpdateLogStreamRequest &request
+    );
     // 修改消息模板
     //
     // 该接口用于修改通知模板,根据名称进行修改。
@@ -823,7 +845,9 @@ private:
     std::string parameterToString(int64_t value);
     std::string parameterToString(float value);
     std::string parameterToString(double value);
+    std::string parameterToString(const Object& obj);
     std::string parameterToString(const utility::datetime &value);
+
     template<class T>
     std::string parameterToString(const std::vector<T> &value)
     {

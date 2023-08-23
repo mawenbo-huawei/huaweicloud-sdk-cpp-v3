@@ -1,3 +1,551 @@
+# 3.1.48 2023-08-21
+
+### HuaweiCloud SDK KMS
+
+- _新增特性_
+  - 支持数据加密服务-密钥管理
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+### HuaweiCloud SDK LTS
+
+- _新增特性_
+  - 支持接口`DeleteDashboard`
+- _解决问题_
+  - 无
+- _特性变更_
+  - **CreateDashBoard**
+    - 响应参数变更
+      - `* last_update_time: string -> int64`
+      - `* useSystemTemplate: string -> boolean`
+  - **CreateLogStream**
+    - 请求参数变更
+      - `- enterprise_project_name`
+      - `- log_stream_name: enum value [lts-stream-13ci]`
+      - `* ttl_in_days: string -> int32`
+      - `* tags: list<tagsBody> -> object<tagsBody>`
+  - **ListAccessConfig**
+    - 响应参数变更
+      - `+ cluster_id`
+      - `+ result.cluster_id`
+  - **UpdateAccessConfig**
+    - 请求参数变更
+      - `+ cluster_id`
+    - 响应参数变更
+      - `+ cluster_id`
+  - **CreateAccessConfig**
+    - 请求参数变更
+      - `+ cluster_id`
+    - 响应参数变更
+      - `+ cluster_id`
+  - **DeleteAccessConfig**
+    - 响应参数变更
+      - `+ cluster_id`
+      - `+ result.cluster_id`
+
+# 3.1.47 2023-08-17
+
+### HuaweiCloud SDK CodeArtsBuild
+
+- _新增特性_
+  - 支持编译构建服务
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+### HuaweiCloud SDK ECS
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **CreateServers**
+    - 请求参数变更
+      - `+ server.root_volume.iops`
+      - `+ server.root_volume.throughput`
+      - `+ server.root_volume.volumetype: enum value [GPSSD2,ESSD2]`
+      - `+ server.data_volumes.iops`
+      - `+ server.data_volumes.throughput`
+      - `+ server.data_volumes.volumetype: enum value [GPSSD2,ESSD2]`
+  - **CreatePostPaidServers**
+    - 请求参数变更
+      - `+ server.data_volumes.iops`
+      - `+ server.data_volumes.throughput`
+      - `+ server.data_volumes.volumetype: enum value [GPSSD2,ESSD2]`
+      - `+ server.root_volume.iops`
+      - `+ server.root_volume.throughput`
+      - `+ server.root_volume.volumetype: enum value [GPSSD2,ESSD2]`
+
+### HuaweiCloud SDK GaussDB
+
+- _新增特性_
+  - 支持接口`ModifyGaussMysqlDns`、`CreateGaussMysqlDns`
+- _解决问题_
+  - 无
+- _特性变更_
+  - **ShowGaussMySqlInstanceInfo**
+    - 响应参数变更
+      - `+ instance.private_dns_names`
+  - **ListGaussMySqlInstanceDetailInfo**
+    - 响应参数变更
+      - `+ instances.private_dns_names`
+
+### HuaweiCloud SDK Live
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **ListSnapshotConfigs**
+    - 响应参数变更
+      - `* body: object<LiveSnapshotConfig> -> list<LiveSnapshotConfig>`
+
+### HuaweiCloud SDK MPC
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **CreateThumbnailsTask**
+    - 请求参数变更
+      - `+ thumbnail_para.dots_ms`
+      - `+ thumbnail_para.type: enum value [DOTS_MS]`
+  - **CreateTranscodingTask**
+    - 请求参数变更
+      - `+ thumbnail.params.dots_ms`
+      - `+ thumbnail.params.type: enum value [DOTS_MS]`
+
+### HuaweiCloud SDK VPC
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **CreateSecurityGroupRule**
+    - 请求参数变更
+      - `+ security_group_rule.remote_address_group_id`
+  - **NeutronCreateSecurityGroupRule**
+    - 请求参数变更
+      - `+ security_group_rule.remote_address_group_id`
+
+# 3.1.46 2023-08-10
+
+### HuaweiCloud SDK CodeArtsDeploy
+
+- _新增特性_
+  - 支持部署服务
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+### HuaweiCloud SDK GaussDB
+
+- _新增特性_
+  - 支持接口`UpdateProxyPort`、`DescribeBackupEncryptStatus`、`ModifyBackupEncryptStatus`
+- _解决问题_
+  - 无
+- _特性变更_
+  - **UpdateProxySessionConsistence**
+    - 请求参数变更
+      - `+ consistence_mode`
+  - **CreateGaussMySqlInstance**
+    - 请求参数变更
+      - `* datastore: object<MysqlDatastore> -> object<MysqlDatastoreInReq>`
+    - 响应参数变更
+      - `* instance.datastore: object<MysqlDatastore> -> object<MysqlDatastoreInRes>`
+  - **ShowGaussMySqlBackupList**
+    - 响应参数变更
+      - `- backups.datastore.kernel_version`
+      - `* backups.datastore: object<MysqlDatastore> -> object<MysqlDatastoreInBackup>`
+  - **ShowGaussMySqlProxyList**
+    - 响应参数变更
+      - `+ proxy_list.proxy.consistence_mode`
+
+### HuaweiCloud SDK OCR
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **RecognizeMyanmarIdcard**
+    - 请求参数变更
+      - `+ return_translation`
+    - 响应参数变更
+      - `+ result.translation_info`
+
+### HuaweiCloud SDK RDS
+
+- _新增特性_
+  - 支持接口`ListXellogFiles`、`CreateXelLogDownload`
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+# 3.1.45 2023-08-03
+
+### HuaweiCloud SDK RDS
+
+- _新增特性_
+  - 支持云数据库服务
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+### HuaweiCloud SDK CDN
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **ShowDomainDetailByName**
+    - 响应参数变更
+      - `- domain.sources.weight`
+      - `* domain.sources: list<SourcesConfig> -> list<SourcesDomainConfig>`
+  - **ShowDomainFullConfig**
+    - 响应参数变更
+      - `+ configs.remark`
+      - `+ configs.ip_frequency_limit`
+      - `+ configs.hsts`
+      - `+ configs.quic`
+      - `+ configs.url_auth.inherit_config`
+      - `+ configs.sources.bucket_access_key`
+      - `+ configs.sources.bucket_secret_key`
+      - `+ configs.sources.bucket_region`
+      - `+ configs.sources.bucket_name`
+      - `+ configs.request_limit_rules.priority`
+      - `+ configs.request_limit_rules.match_type`
+      - `+ configs.request_limit_rules.match_value`
+  - **UpdateDomainFullConfig**
+    - 请求参数变更
+      - `+ configs.remark`
+      - `+ configs.ip_frequency_limit`
+      - `+ configs.hsts`
+      - `+ configs.quic`
+      - `+ configs.url_auth.inherit_config`
+      - `+ configs.sources.bucket_access_key`
+      - `+ configs.sources.bucket_secret_key`
+      - `+ configs.sources.bucket_region`
+      - `+ configs.sources.bucket_name`
+      - `+ configs.request_limit_rules.priority`
+      - `+ configs.request_limit_rules.match_type`
+      - `+ configs.request_limit_rules.match_value`
+
+### HuaweiCloud SDK CTS
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **DeleteTracker**
+    - 请求参数变更
+      - `+ tracker_type: enum value [system]`
+
+### HuaweiCloud SDK GaussDB
+
+- _新增特性_
+  - 支持接口`ModifyGaussMySqlProxyRouteMode`
+- _解决问题_
+  - 无
+- _特性变更_
+  - **ShowGaussMySqlEngineVersion**
+    - 响应参数变更
+      - `+ datastores.version`
+      - `+ datastores.kernel_version`
+  - **CreateGaussMySqlProxy**
+    - 请求参数变更
+      - `+ route_mode`
+  - **CreateGaussMySqlInstance**
+    - 请求参数变更
+      - `+ datastore.kernel_version`
+    - 响应参数变更
+      - `+ instance.datastore.kernel_version`
+  - **ShowGaussMySqlBackupList**
+    - 响应参数变更
+      - `+ backups.datastore.kernel_version`
+  - **ShowGaussMySqlProxyList**
+    - 响应参数变更
+      - `+ proxy_list.proxy.route_mode`
+      - `+ proxy_list.proxy.balance_route_mode_enabled`
+
+### HuaweiCloud SDK GaussDBforopenGauss
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **ListInstances**
+    - 响应参数变更
+      - `+ instances.backup_used_space`
+  - **ListComponentInfos**
+    - 请求参数变更
+      - `+ component_type`
+      - `+ availability_zone_id`
+    - 响应参数变更
+      - `+ nodes.name`
+      - `+ nodes.availability_zone_id`
+      - `+ nodes.description`
+      - `+ nodes.status`
+      - `+ nodes.components.distributed_id`
+  - **ListInstancesDetails**
+    - 响应参数变更
+      - `+ instances.backup_used_space`
+
+### HuaweiCloud SDK VPC
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **ListPorts**
+    - 请求参数变更
+      - `+ enable_efi`
+    - 响应参数变更
+      - `+ ports.enable_efi`
+  - **CreatePort**
+    - 响应参数变更
+      - `+ port.enable_efi`
+  - **ShowPort**
+    - 响应参数变更
+      - `+ port.enable_efi`
+  - **UpdatePort**
+    - 响应参数变更
+      - `+ port.enable_efi`
+
+# 3.1.44 2023-07-27
+
+### HuaweiCloud SDK DRS
+
+- _新增特性_
+  - 支持以下接口：
+    - `DownloadBatchCreateTemplate`
+    - `ImportBatchCreateJobs`
+    - `CopyJob`
+    - `ShowMetering`
+    - `ShowDirtyData`
+    - `ShowComparePolicy`
+    - `ShowHealthCompareJobList`
+    - `ShowProgressData`
+    - `ShowObjectMapping`
+    - `ShowActions`
+    - `ValidateJobName`
+    - `ShowEnterpriseProject`
+- _解决问题_
+  - 无
+- _特性变更_
+  - **DownloadDbObjectTemplate**
+    - 请求参数变更
+      - `+ file_import_db_level`
+  - **UploadDbObjectTemplate**
+    - 请求参数变更
+      - `+ file_import_db_level`
+  - **ListAsyncJobs**
+    - 响应参数变更
+      - `+ jobs.status: enum value [AUTO_PARAM_VALIDATE_SUCCESS,COMMIT_SUCCESS]`
+      - `- jobs.status: enum value [ASYNC_JOB_CREATING,ASYNC_JOB_CREATE_FAILED,ASYNC_JOB_COMPLETED]`
+  - **CreateJob**
+    - 请求参数变更
+      - `+ job.node_info.base_info`
+    - 响应参数变更
+      - `+ is_clone_job`
+      - `+ create_time`
+      - `+ name`
+      - `+ id`
+      - `+ status`
+      - `+ job.is_clone_job`
+  - **BatchCreateJobsAsync**
+    - 请求参数变更
+      - `+ jobs.node_info.base_info`
+  - **ListAsyncJobDetail**
+    - 响应参数变更
+      - `+ jobs.support_import_file_resp`
+      - `+ jobs.instance_features`
+      - `+ jobs.task_version`
+      - `+ jobs.node_info.base_info`
+  - **UpdateBatchAsyncJobs**
+    - 请求参数变更
+      - `+ jobs.type: enum value [policy]`
+      - `- jobs.type: enum value [policy_config]`
+      - `+ jobs.params.node_info.base_info`
+  - **ShowJobDetail**
+    - 请求参数变更
+      - `+ type: enum value [file]`
+    - 响应参数变更
+      - `+ job.support_import_file_resp`
+      - `+ job.instance_features`
+      - `+ job.task_version`
+      - `+ job.node_info.base_info`
+  - **UpdateJob**
+    - 请求参数变更
+      - `+ job.type: enum value [policy]`
+      - `- job.type: enum value [policy_config]`
+      - `+ job.params.node_info.base_info`
+
+### HuaweiCloud SDK EIP
+
+- _新增特性_
+  - 无
+- _解决问题_
+  - 无
+- _特性变更_
+  - **AttachShareBandwidth**
+    - 响应参数变更
+      - `+ publicip.vnic.vtep`
+      - `+ publicip.vnic.vni`
+      - `+ publicip.vnic.port_profile`
+  - **DetachShareBandwidth**
+    - 响应参数变更
+      - `+ publicip.vnic.vtep`
+      - `+ publicip.vnic.vni`
+      - `+ publicip.vnic.port_profile`
+  - **EnableNat64**
+    - 响应参数变更
+      - `+ publicip.vnic.vtep`
+      - `+ publicip.vnic.vni`
+      - `+ publicip.vnic.port_profile`
+  - **DisableNat64**
+    - 响应参数变更
+      - `+ publicip.vnic.vtep`
+      - `+ publicip.vnic.vni`
+      - `+ publicip.vnic.port_profile`
+  - **AttachBatchPublicIp**
+    - 响应参数变更
+      - `+ publicips.publicip.vnic.vtep`
+      - `+ publicips.publicip.vnic.vni`
+      - `+ publicips.publicip.vnic.port_profile`
+  - **DetachBatchPublicIp**
+    - 响应参数变更
+      - `+ publicips.publicip.vnic.vtep`
+      - `+ publicips.publicip.vnic.vni`
+      - `+ publicips.publicip.vnic.port_profile`
+
+### HuaweiCloud SDK GaussDBforNoSQL
+
+- _新增特性_
+  - 支持接口`ShowInstanceBiactiveRegions`
+- _解决问题_
+  - 无
+- _特性变更_
+  - **ListConfigurations**
+    - 响应参数变更
+      - `+ quota`
+      - `+ configurations.mode`
+  - **ListConfigurationTemplates**
+    - 响应参数变更
+      - `+ quota`
+      - `+ configurations.mode`
+  - **ShowInstanceConfiguration**
+    - 响应参数变更
+      - `+ mode`
+      - `+ id`
+  - **ListConfigurationDatastores**
+    - 响应参数变更
+      - `+ datastores.mode`
+  - **ShowQuotas**
+    - 请求参数变更
+      - `+ datastore_type`
+      - `+ mode`
+  - **ListInstances**
+    - 响应参数变更
+      - `+ instances.datastore.whole_version`
+
+### HuaweiCloud SDK GaussDBforopenGauss
+
+- _新增特性_
+  - 支持接口`DownloadBackup`
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+### HuaweiCloud SDK LTS
+
+- _新增特性_
+  - 支持接口`UpdateLogStream`
+- _解决问题_
+  - 无
+- _特性变更_
+  - **UpdateLogGroup**
+    - 请求参数变更
+      - `+ tags`
+  - **CreateLogGroup**
+    - 请求参数变更
+      - `+ tags`
+  - **CreateLogStream**
+    - 请求参数变更
+      - `+ enterprise_project_name`
+      - `+ ttl_in_days`
+      - `+ tags`
+      - `+ log_stream_name: enum value [lts-stream-13ci]`
+
+# 3.1.43 2023-07-20
+
+### HuaweiCloud SDK GaussDBforopenGauss
+
+- _新增特性_
+  - 支持云数据库 GaussDB服务
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+### HuaweiCloud SDK GaussDB
+
+- _新增特性_
+  - 支持云数据库 GaussDB服务
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+### HuaweiCloud SDK GaussDBforNoSQL
+
+- _新增特性_
+  - 支持云数据库 GaussDB NoSQL服务
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+### HuaweiCloud SDK DDS
+
+- _新增特性_
+  - 支持文档数据库服务
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
+### HuaweiCloud SDK EIP
+
+- _新增特性_
+  - 支持以下接口：
+    - `AttachShareBandwidth`
+    - `AttachBatchPublicIp`
+    - `DetachShareBandwidth`
+    - `DetachBatchPublicIp`
+    - `EnableNat64`
+    - `DisableNat64`
+    - `ListBandwidth`
+- _解决问题_
+  - 无
+- _特性变更_
+  - 无
+
 # 3.1.42 2023-07-13
 
 ### HuaweiCloud SDK SIS
